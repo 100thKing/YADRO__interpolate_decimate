@@ -42,10 +42,10 @@ for idx = 1 : N_f
     if pwr_err > 1e-15
         snr_v(idx) = 10 * log10(pwr_sig / pwr_err);
     else
-        snr_v(idx) = Inf;
+        snr_v(idx) = 0;
     end
 
-    fprintf('f = %4d Гц  |  RMSE = %.4f  |  NRMSE = %6.2f %%  |  SNR = %7.2f дБ\n', ...
+    fprintf('f = %4d Гц  |  RMSE = %.4f  |  NRMSE = %6.2f %%  |  SER = %7.2f дБ\n', ...
             f, rmse(idx), nrmse(idx), snr_v(idx));
 end
 
@@ -61,11 +61,11 @@ title('RMSE vs Частота');
 grid on; xlim([0 505]);
 
 subplot(2,2,2);
-snr_plot = min(snr_v, 80);   % ограничим Inf для отображения
+snr_plot = min(snr_v, 80);
 plot(f_list, snr_plot, 'g-s', 'LineWidth', 1, 'MarkerFaceColor', 'g');
 xline(Fs/(2*M), 'r--', 'LineWidth', 1);
-xlabel('Частота f, Гц'); ylabel('SNR, дБ');
-title('SNR vs Частота');
+xlabel('Частота f, Гц'); ylabel('SER, дБ');
+title('SER vs Частота');
 grid on; xlim([0 505]);
 
 f_demo = 100;
