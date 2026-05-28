@@ -100,4 +100,4 @@ M        = 3;           % Коэффициент децимации/интерп
 
 **Результат**
 
-![plot](third_pary/plot.png)
+![plot](third_party/plot.png)
